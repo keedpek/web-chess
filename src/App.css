@@ -3,13 +3,82 @@
   padding: 0;
 }
 
+:root {
+  --main-color-light: #dadada;
+  --main-color-dark: #1d1d1d;
+  --graveyard-color-light: #807f7f;
+  --graveyard-color-dark: #393939;
+  --text-color-light: black;
+  --text-color-dark: white;
+}
+
+.light-theme {
+  --main-color: var(--main-color-light);
+  --graveyard-color: var(--graveyard-color-light);
+  --text-color: var(--text-color-light)
+}
+
+.dark-theme {
+  --main-color: var(--main-color-dark);
+  --graveyard-color: var(--graveyard-color-dark);
+  --text-color: var(--text-color-dark)
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.choose-time {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-time h1 {
+  color: var(--text-color);
+}
+
+.button-holder {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-holder button {
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #6a6262;
+  cursor: pointer;
+}
+
 .app {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dadada;
+  background-color: var(--main-color);
+}
+
+.toggle-theme {
+  height: 5%;
+  width: 5%;
+  font-size: 32px;
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  border: none;
+  background-color: var(--main-color);
+  cursor: pointer;
 }
 
 .board {
@@ -28,7 +97,7 @@
 }
 
 .cell img {
-  width: 50px;
+  width: 40px;
   height: 50px;
   position: relative;
 }
@@ -49,8 +118,29 @@
   background: rgb(107,222,0);
   background: radial-gradient(circle, rgba(107,222,0,1) 65%, rgba(126,251,30,1) 80%, rgba(0,175,32,1) 100%);
 }
-
 .under-attack {
   background: rgb(255,72,47);
   background: radial-gradient(circle, rgba(255,72,47,1) 65%, rgba(247,137,0,1) 80%, rgba(173,0,0,1) 100%);
+}
+
+.graveyard {
+  background-color: var(--graveyard-color);
+  height: 70%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-left: 3%;
+}
+
+.side {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.timer h2 {
+  color: var(--text-color);
 }
