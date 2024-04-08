@@ -7,6 +7,7 @@ import { Colors } from './models/Colors';
 import LostFigures from './components/LostFigures';
 import Timer from './components/timer';
 import ChooseTime from './components/ChooseTime';
+import TheEnd from './components/TheEnd';
 
 const App = () => {
   const [board, setBoard] = useState(new Board());
@@ -37,6 +38,11 @@ const App = () => {
     setStage('settings')
   }
 
+  function endGame() {
+    setStage('theEnd')
+    console.log('gg')
+  }
+
   function swapPlayer() {
     setCurrentPlayer(currentPlayer?.color === Colors.BLACK ? whitePlayer : blackPlayer)
   }
@@ -53,6 +59,7 @@ const App = () => {
             currentPlayer={currentPlayer}
             restart={restart}
             time={time}
+            endOfTime={endGame}
           />}
           <BoardComponent 
             board={board}
@@ -66,6 +73,7 @@ const App = () => {
           />
         </div>
       }
+      {stage === 'theEnd' && <TheEnd currentPlayer={currentPlayer} restart={restart}/>}
     </div>
   );
 }

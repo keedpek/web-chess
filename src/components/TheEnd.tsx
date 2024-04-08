@@ -1,22 +1,23 @@
 import React, { FC } from 'react';
-import { Time } from '../models/time';
+import { Player } from '../models/Player';
+import { Colors } from '../models/Colors';
 
 interface CellProps {
-  onTimeSelect: (time: number) => void
+  restart: () => void;
+  currentPlayer: Player | null;
 }
 
-const ChooseTime: FC<CellProps> = ({onTimeSelect}) => {
+const TheEnd: FC<CellProps> = ({restart, currentPlayer}) => {
+  const handleNewGame = () => {
+    restart();
+  }
+
   return (
-    <div className='choose-time'>
-      <h1>Выберите время</h1>
-      <div className='button-holder'>
-        <button onClick={() => onTimeSelect(Time.WITHOUTTIMER)}>Без таймера</button>
-        <button onClick={() => onTimeSelect(Time.MINUTE)}>1 минута</button>
-        <button onClick={() => onTimeSelect(Time.FIVEMINUTES)}>5 минут</button>
-        <button onClick={() => onTimeSelect(Time.TENMINUTES)}>10 минут</button>
-      </div>
+    <div className='end-game'>
+      <h1>🎉{currentPlayer?.color === Colors.WHITE ? 'Черные' : 'Белые'} победили!🎉</h1>
+      <button onClick={handleNewGame}>Новая игра</button>
     </div>
   );
 }
 
-export default ChooseTime;
+export default TheEnd;
